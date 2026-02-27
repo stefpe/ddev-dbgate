@@ -25,12 +25,38 @@ After installation, make sure to commit the `.ddev` directory to version control
 | `ddev describe` | View service status and used ports for Dbgate |
 | `ddev logs -s dbgate` | Check Dbgate logs |
 
+After starting, Dbgate will be available at:
+- `http://dbgate.project.ddev.site:3000`
+- `https://dbgate.project.ddev.site:3001`
+
 ## Advanced Customization
+
+### Connections
+
+You can manage your database connections in `.ddev/.env.dbgate`. By default, it includes MySQL, Postgres, and Redis with DDEV defaults.
+
+To add or modify connections, edit the `CONNECTIONS` list and add the corresponding `LABEL_`, `SERVER_`, `USER_`, `PASSWORD_`, `PORT_`, and `ENGINE_` variables.
+
+Example for a custom connection:
+```bash
+CONNECTIONS=mysql,my_custom_db
+
+# ... existing mysql config ...
+
+LABEL_my_custom_db=Custom DB
+SERVER_my_custom_db=custom-service
+USER_my_custom_db=user
+PASSWORD_my_custom_db=pass
+PORT_my_custom_db=5432
+ENGINE_my_custom_db=postgres@dbgate-plugin-postgres
+```
+
+### Docker Image
 
 To change the Docker image:
 
 ```bash
-ddev dotenv set .ddev/.env.dbgate --dbgate-docker-image="ddev/ddev-utilities:latest"
+ddev dotenv set .ddev/.env.dbgate --dbgate-docker-image="dbgate/dbgate:latest"
 ddev add-on get stefpe/ddev-dbgate
 ddev restart
 ```
@@ -41,7 +67,7 @@ All customization options (use with caution):
 
 | Variable | Flag | Default |
 | -------- | ---- | ------- |
-| `DBGATE_DOCKER_IMAGE` | `--dbgate-docker-image` | `ddev/ddev-utilities:latest` |
+| `DBGATE_DOCKER_IMAGE` | `--dbgate-docker-image` | `dbgate/dbgate:latest` |
 
 ## Credits
 
