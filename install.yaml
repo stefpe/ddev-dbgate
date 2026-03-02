@@ -3,5 +3,6 @@ name: dbgate
 project_files:
   - docker-compose.dbgate.yaml
   - .env.dbgate
+  - commands/host/dbgate
 
 ddev_version_constraint: '>= v1.24.3'

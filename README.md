@@ -22,12 +22,13 @@ After installation, make sure to commit the `.ddev` directory to version control
 
 | Command | Description |
 | ------- | ----------- |
+| `ddev dbgate` | Launch Dbgate in the browser |
 | `ddev describe` | View service status and used ports for Dbgate |
 | `ddev logs -s dbgate` | Check Dbgate logs |
 
 After starting, Dbgate will be available at:
-- `http://dbgate.project.ddev.site:3000`
-- `https://dbgate.project.ddev.site:3001`
+- `http://dbgate.project.ddev.site:8048`
+- `https://dbgate.project.ddev.site:8049`
 
 ## Advanced Customization
 
